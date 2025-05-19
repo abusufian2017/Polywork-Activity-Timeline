@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polywork Activity Timeline</title>
+    <style>
+        /* Sass-style class names */
+        .sass-timeline-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .sass-timeline-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .sass-timeline-title {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .sass-timeline-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+        .sass-timeline-contact {
+            margin-top: 1rem;
+        }
+
+        .sass-contact-link {
+            color: #4a6baf;
+            text-decoration: none;
+            margin: 0 0.5rem;
+        }
+
+        .sass-contact-link:hover {
+            text-decoration: underline;
+        }
+
+        .sass-timeline {
+            position: relative;
+            padding-left: 50px;
+        }
+
+        .sass-timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #e0e0e0;
+        }
+
+        .sass-timeline-item {
+            position: relative;
+            margin-bottom: 2.5rem;
+            padding: 1.5rem;
+            border-radius: 8px;
+            background: #fff;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .sass-timeline-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .sass-timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -40px;
+            top: 20px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #4a6baf;
+            border: 3px solid #fff;
+            box-shadow: 0 0 0 2px #4a6baf;
+        }
+
+        .sass-timeline-date {
+            position: absolute;
+            left: -150px;
+            top: 20px;
+            color: #666;
+            font-size: 0.9rem;
+            width: 100px;
+            text-align: right;
+        }
+
+        .sass-timeline-content {
+            margin-left: 0;
+        }
+
+        .sass-timeline-role {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .sass-timeline-company {
+            font-size: 1rem;
+            color: #4a6baf;
+            margin-bottom: 0.5rem;
+        }
+
+        .sass-timeline-description {
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .sass-timeline-tags {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .sass-timeline-tag {
+            background: #f0f4ff;
+            color: #4a6baf;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .sass-timeline {
+                padding-left: 30px;
+            }
+
+            .sass-timeline-date {
+                position: relative;
+                left: 0;
+                top: 0;
+                text-align: left;
+                width: auto;
+                margin-bottom: 0.5rem;
+            }
+
+            .sass-timeline-item::before {
+                left: -30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sass-timeline-container">
+        <div class="sass-timeline-header">
+            <h1 class="sass-timeline-title">My Collaborations Timeline</h1>
+            <p class="sass-timeline-subtitle">Highlights of my professional journey and partnerships</p>
+            <div class="sass-timeline-contact">
+                Contact me: 
+                <a href="tel:01705900937" class="sass-contact-link">01705900937</a> | 
+                <a href="mailto:abusufianshoron2017@gmail.com" class="sass-contact-link">abusufianshoron2017@gmail.com</a>
+            </div>
+        </div>
+
+        <div class="sass-timeline" id="sassTimeline">
+            <!-- Timeline items will be added by JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const timelineData = [
+                {
+                    date: "2023 - Present",
+                    role: "Senior Web Developer",
+                    company: "TechSolutions Inc.",
+                    description: "Leading a team of developers to create innovative web applications for enterprise clients. Collaborated with UX designers to implement responsive interfaces.",
+                    tags: ["JavaScript", "React", "Team Leadership", "API Integration"]
+                },
+                {
+                    date: "2021 - 2023",
+                    role: "Frontend Developer",
+                    company: "Digital Creations Agency",
+                    description: "Worked closely with clients to develop custom web solutions. Partnered with backend developers to ensure seamless integration.",
+                    tags: ["HTML/CSS", "Vue.js", "Client Collaboration", "UI Design"]
+                },
+                {
+                    date: "2019 - 2021",
+                    role: "Freelance Developer",
+                    company: "Various Clients",
+                    description: "Collaborated with small businesses and startups to build their online presence. Worked with graphic designers to implement brand identities.",
+                    tags: ["WordPress", "CSS", "Project Management", "Consulting"]
+                },
+                {
+                    date: "2017 - 2019",
+                    role: "Junior Developer",
+                    company: "WebWorks Studio",
+                    description: "Supported senior developers on large projects. Learned collaborative development workflows and version control systems.",
+                    tags: ["Git", "JavaScript", "Teamwork", "Debugging"]
+                }
+            ];
+
+            const timelineElement = document.getElementById('sassTimeline');
+
+            timelineData.forEach(item => {
+                const timelineItem = document.createElement('div');
+                timelineItem.className = 'sass-timeline-item';
+
+                const tagsHTML = item.tags.map(tag => 
+                    `<span class="sass-timeline-tag">${tag}</span>`
+                ).join('');
+
+                timelineItem.innerHTML = `
+                    <div class="sass-timeline-date">${item.date}</div>
+                    <div class="sass-timeline-content">
+                        <h3 class="sass-timeline-role">${item.role}</h3>
+                        <p class="sass-timeline-company">${item.company}</p>
+                        <p class="sass-timeline-description">${item.description}</p>
+                        <div class="sass-timeline-tags">${tagsHTML}</div>
+                    </div>
+                `;
+
+                timelineElement.appendChild(timelineItem);
+            });
+
+            // Animation effect
+            const timelineItems = document.querySelectorAll('.sass-timeline-item');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            timelineItems.forEach(item => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(20px)';
+                item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(item);
+            });
+        });
+    </script>
+</body>
+</html>
